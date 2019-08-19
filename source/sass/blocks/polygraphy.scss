@@ -1,0 +1,78 @@
+.polygraphy {
+  padding-top: 68px;
+  padding-bottom: 60px;
+}
+
+.polygraphy__wrapper::before {
+  content: "3";
+  top: 48px;
+}
+
+.polygraphy__description {
+  margin-top: 45px;
+  font-size: 14px;
+  line-height: 24px;
+  color: #5e606a;
+
+  &:nth-child(2n+1) {
+    margin-top: 25px;
+  }
+}
+
+.polygraphy__image {
+  position: relative;
+  margin-top: 5px;
+  min-width: 304px;
+  left: -5px;
+}
+
+@media (min-width: $tablet-width) {
+  .polygraphy {
+    padding-top: 107px;
+    padding-bottom: 120px;
+  }
+
+  .polygraphy__title {
+    width: 440px;
+  }
+
+  .polygraphy__description {
+    width: 640px;
+  }
+
+  .polygraphy__wrapper::before {
+    top: 38px;
+  }
+
+  .polygraphy__request-wrapper {
+    position: relative;
+    margin-top: 65px;
+  }
+
+  .polygraphy__image-wrapper {
+    position: absolute;
+    top: -50px;
+    right: -122px;
+  }
+
+  .polygraphy__image {
+    min-width: 453px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .polygraphy {
+    padding-top: 135px;
+    padding-bottom: 155px;
+  }
+
+  .polygraphy__image-wrapper {
+    top: -545px;
+    right: -105px;
+  }
+
+  .polygraphy__wrapper::before {
+    top: 35px;
+    left: -65px;
+  }
+}

@@ -1,0 +1,149 @@
+.slider__image-container {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.slider__image-container::before,
+.slider__image-container::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -6px;
+  border-radius: 10px;
+}
+
+.slider__image-container::before {
+  width: calc(100% - 26px);
+  height: 163px;
+  top: -10px;
+  left: 13px;
+  background-color: #e4dde8;
+}
+
+.slider__image-container::after {
+  width: calc(100% - 10px);
+  height: 177px;
+  top: -5px;
+  left: 5px;
+  background-color: #bebac1;
+}
+
+.slider__image {
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  border-radius: 10px;
+  box-shadow: 0 20px 46px 0 rgba(80, 9, 79, 0.35);
+}
+
+.slider__note {
+  display: block;
+  margin: 0;
+  margin-top: 5px;
+  padding: 0;
+  font-size: 13px;
+  line-height: 24px;
+  color: #5e606a;
+}
+
+.slider__buttons {
+  margin-top: 31px;
+  padding: 0 34px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.slider__button {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  width: 90px;
+  height: 15px;
+  text-indent: -10000px;
+  background: none;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+}
+
+.slider__arrow {
+  display: block;
+  position: absolute;
+  box-sizing: border-box;
+  width: 80px;
+  height: 2px;
+  background-color: #883eca;
+}
+
+.slider__arrow--left {
+  right: 0;
+}
+
+.slider__arrow--left::before,
+.slider__arrow--right::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-left: 2px solid #883eca;
+  border-top: 2px solid #883eca;
+  border-radius: 3px;
+}
+
+.slider__arrow--left::before {
+  left: -10px;
+  transform: rotate(-45deg);
+}
+
+.slider__arrow--right::after {
+  right: -10px;
+  transform: rotate(135deg);
+}
+
+@media (min-width: $tablet-width) {
+  .slider__image-container::before {
+    width: calc(100% - 70px);
+    height: 163px;
+    top: -24px;
+    left: 35px;
+    background-color: #e4dde8;
+  }
+
+  .slider__image-container::after {
+    width: calc(100% - 32px);
+    height: 177px;
+    top: -12px;
+    left: 16px;
+    background-color: #bebac1;
+  }
+
+  .slider__wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 17px;
+  }
+
+  .slider__buttons {
+    padding: 0;
+    margin-top: 27px;
+    width: 225px;
+  }
+}

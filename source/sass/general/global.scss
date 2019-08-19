@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: "Open Sans", "Arial", sans-serif;
+  font-size: 17px;
+  line-height: 24px;
+  background-image: url("../img/background-purple-mobile.png");
+  background-size: 100% auto;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+
+  @media (min-width: $tablet-width) {
+    background-image: url("../img/background-purple-tablet.png");
+    background-size: 780px auto;
+    background-position: 2% 0;
+  }
+
+  @media (min-width: 780px) {
+    background-size: 100% auto;
+    background-position: 0 0;
+  }
+
+  @media (min-width: $desktop-width) {
+    background-image: url("../img/background-purple-desktop.png");
+    background-size: 1920px auto;
+    background-position: 32% 0;
+  }
+
+  @media (min-width: 1920px) {
+    background-size: 100% auto;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

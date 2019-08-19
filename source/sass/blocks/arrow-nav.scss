@@ -1,0 +1,64 @@
+.arrow-nav {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.arrow-nav__button {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  width: 90px;
+  height: 15px;
+  text-indent: -10000px;
+  background: none;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+}
+
+.arrow-nav__arrow {
+  display: block;
+  position: absolute;
+  box-sizing: border-box;
+  width: 80px;
+  height: 2px;
+  background-color: #883eca;
+}
+
+.arrow-nav__arrow--left {
+  right: 0;
+}
+
+.arrow-nav__arrow--left::before,
+.arrow-nav__arrow--right::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-left: 2px solid #883eca;
+  border-top: 2px solid #883eca;
+  border-radius: 3px;
+}
+
+.arrow-nav__arrow--left::before {
+  left: -10px;
+  transform: rotate(-45deg);
+}
+
+.arrow-nav__arrow--right::after {
+  right: -10px;
+  transform: rotate(135deg);
+}

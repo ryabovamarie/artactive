@@ -1,0 +1,14 @@
+.title {
+  font-family: "Muller", "Arial", sans-serif;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 500;
+  color: #383d52;
+}
+
+@media (min-width: $tablet-width) {
+  .title {
+    font-size: 32px;
+    line-height: 38px;
+  }
+}

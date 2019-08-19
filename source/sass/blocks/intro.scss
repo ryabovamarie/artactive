@@ -1,0 +1,135 @@
+.intro {
+  font-family: "Muller", "Arial", sans-serif;
+  color: white;
+}
+
+.intro__image {
+  position: relative;
+  margin-left: -45px;
+  display: block;
+  box-sizing: border-box;
+  min-width: 341px;
+  width: 100%;
+  max-width: 546px;
+}
+
+.intro__title {
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  margin-top: 10px;
+  font-size: 36px;
+  line-height: 43px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+}
+
+.intro__description {
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  margin-top: 24px;
+  font-size: 21px;
+  line-height: 25px;
+  font-weight: 500;
+}
+
+.intro__wrapper {
+  margin-top: 42px;
+}
+
+.intro__printing-button {
+  padding: 14px 0;
+  font-family: "Open Sans", "Arial", sans-serif;
+  font-weight: 600;
+  letter-spacing: 1.1px;
+  border-radius: 25px;
+}
+
+.intro__note {
+  display: block;
+  box-sizing: border-box;
+  margin-top: 25px;
+  font-family: "Open Sans", "Arial", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+@media (min-width: $tablet-width) {
+  .intro {
+    width: 100%;
+  }
+
+  .intro__image {
+    position: absolute;
+    margin-left: -113px;
+    padding: 0;
+    width: 546px;
+  }
+
+  .intro__content-wrapper {
+    margin: 0;
+    margin-left: auto;
+    padding: 0;
+    padding-top: 45px;
+    box-sizing: border-box;
+    width: 282px;
+  }
+
+  .intro__title {
+    margin: 0;
+    font-size: 45px;
+    line-height: 53px;
+  }
+
+  .intro__description {
+    margin-top: 30px;
+  }
+
+  .intro__wrapper {
+    margin-top: 37px;
+  }
+
+  .intro__printing-button {
+    padding: 13px 0;
+    width: 250px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .intro__image {
+    width: 655px;
+    max-width: 655px;
+  }
+
+  .intro__content-wrapper {
+    width: 517px;
+  }
+
+  .intro__title {
+    margin-top: 10px;
+    font-size: 60px;
+    line-height: 75px;
+    letter-spacing: 3px;
+  }
+
+  .intro__description {
+    margin-top: 35px;
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .intro__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 70px;
+  }
+
+  .intro__note {
+    margin: 0;
+    width: 245px;
+  }
+}
