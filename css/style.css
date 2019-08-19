@@ -1945,3 +1945,7 @@ body {
     height: 14px; }
   .page-footer__copyright {
     margin: 0; } }
+
+@media (min-width: 1170px) {
+  .page-footer__wrapper {
+    width: 1170px; } }
