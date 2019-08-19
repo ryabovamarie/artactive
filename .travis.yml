@@ -1,13 +1,15 @@
 language: node_js
 
 node_js:
-  - "8.11"
+  - 10
+  - 8
 
 notifications:
   email: false
 
 before_deploy:
   - npm run build
+  - echo -e "node_modules\npackage-lock.json" > .gitignore
 
 deploy:
   local-dir: "build"
@@ -17,3 +19,4 @@ deploy:
   keep-history: true
   on:
     branch: master
+    node: 10
