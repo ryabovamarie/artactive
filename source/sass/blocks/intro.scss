@@ -1,13 +1,12 @@
 .intro {
-  font-family: "Muller", "Arial", sans-serif;
-  color: white;
+  font-family: $muller-font;
+  color: $color-text-white;
 }
 
 .intro__image {
   position: relative;
   margin-left: -45px;
   display: block;
-  box-sizing: border-box;
   min-width: 341px;
   width: 100%;
   max-width: 546px;
@@ -15,7 +14,6 @@
 
 .intro__title {
   display: block;
-  box-sizing: border-box;
   margin: 0;
   margin-top: 10px;
   font-size: 36px;
@@ -27,7 +25,6 @@
 
 .intro__description {
   display: block;
-  box-sizing: border-box;
   margin: 0;
   margin-top: 24px;
   font-size: 21px;
@@ -41,7 +38,7 @@
 
 .intro__printing-button {
   padding: 14px 0;
-  font-family: "Open Sans", "Arial", sans-serif;
+  font-family: $main-font;
   font-weight: 600;
   letter-spacing: 1.1px;
   border-radius: 25px;
@@ -49,9 +46,8 @@
 
 .intro__note {
   display: block;
-  box-sizing: border-box;
   margin-top: 25px;
-  font-family: "Open Sans", "Arial", sans-serif;
+  font-family: $main-font;
   font-size: 16px;
   line-height: 20px;
   font-weight: 400;
@@ -74,7 +70,6 @@
     margin-left: auto;
     padding: 0;
     padding-top: 45px;
-    box-sizing: border-box;
     width: 282px;
   }
 

@@ -1,9 +1,9 @@
 .title {
-  font-family: "Muller", "Arial", sans-serif;
+  font-family: $muller-font;
   font-size: 24px;
   line-height: 29px;
   font-weight: 500;
-  color: #383d52;
+  color: $color-text-dark-grey;
 }
 
 @media (min-width: $tablet-width) {

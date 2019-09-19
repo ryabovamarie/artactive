@@ -1,11 +1,9 @@
 .page-main {
-  box-sizing: border-box;
   padding: 0;
 }
 
 .page-main__intro {
   display: block;
-  box-sizing: border-box;
   max-width: $mobile-width + 100px;
   margin: 0 auto;
   margin-top: 4px;
@@ -14,25 +12,22 @@
 }
 
 .page-main__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  @include list-unstyled;
 }
 
 .page-main__item {
   display: block;
-  box-sizing: border-box;
   width: 100%;
 
   &:nth-child(1) {
     padding-top: 37px;
     padding-bottom: 55px;
-    background-color: white;
+    background-color: $background-white;
   }
 
   &:nth-child(2) {
     padding-top: 63px;
-    background-color: #faf8fb;
+    background-color: $background-grey;
   }
 
   &:nth-child(3) {
@@ -52,7 +47,6 @@
 
 .page-main__item-wrapper {
   display: block;
-  box-sizing: border-box;
   max-width: $mobile-width + 100px;
   margin: 0 auto;
   padding: 0 15px;
@@ -60,16 +54,12 @@
 
 .page-main__item-title {
   margin: 0;
-  font-family: "Muller", "Arial", sans-serif;
-  font-size: 30px;
-  line-height: 35px;
-  font-weight: 700;
-  color: #7f38bd;
+
+  @include purple-header;
 }
 
 .page-main__item-title--services {
   display: block;
-  box-sizing: border-box;
   max-width: $mobile-width + 100px;
   margin: 0 auto;
   padding: 0 15px;

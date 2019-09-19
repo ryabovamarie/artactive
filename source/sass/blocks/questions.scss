@@ -13,7 +13,7 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 30px;
-  color: #383d52;
+  color: $color-text-dark-grey;
 }
 
 .questions__description {
@@ -22,7 +22,7 @@
   padding: 0;
   font-size: 14px;
   line-height: 24px;
-  color: #5e606a;
+  color: $color-text-grey;
 }
 
 .questions__appeal {

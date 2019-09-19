@@ -2,8 +2,8 @@
   padding: 0 25px;
   padding-top: 27px;
   padding-bottom: 30px;
-  color: white;
-  background-color: #883eca;
+  color: $color-text-white;
+  background-color: $purple;
   border-radius: 10px;
   box-shadow: 0 23px 32px 0 rgba(81, 8, 86, 0.33);
 }
@@ -63,7 +63,6 @@
 @media (min-width: $desktop-width) {
   .feedback {
     width: 473px;
-    box-sizing: border-box;
   }
 
   .feedback__wrapper {

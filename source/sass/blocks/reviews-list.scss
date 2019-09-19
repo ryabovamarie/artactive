@@ -1,8 +1,6 @@
 .reviews-list {
-  margin: 0;
+  @include list-unstyled;
   margin-top: 30px;
-  padding: 0;
-  list-style: none;
 }
 
 .reviews-list__item:first-child,

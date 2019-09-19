@@ -1,0 +1,16 @@
+@mixin logo-text() {
+  font-size: 18px;
+  line-height: 15px;
+  font-weight: 800;
+  color: $color-text-white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@mixin purple-header() {
+  font-family: "Muller", "Arial", sans-serif;
+  font-size: 30px;
+  line-height: 35px;
+  font-weight: 700;
+  color: #7f38bd;
+}

@@ -1,7 +1,6 @@
 .slider__image-container {
   position: relative;
   display: block;
-  box-sizing: border-box;
   width: 100%;
 }
 
@@ -52,7 +51,6 @@
 .slider__buttons {
   margin-top: 31px;
   padding: 0 34px;
-  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -61,7 +59,6 @@
 .slider__button {
   position: relative;
   display: block;
-  box-sizing: border-box;
   padding: 0;
   margin: 0;
   width: 90px;
@@ -83,10 +80,9 @@
 .slider__arrow {
   display: block;
   position: absolute;
-  box-sizing: border-box;
   width: 80px;
   height: 2px;
-  background-color: #883eca;
+  background-color: $purple;
 }
 
 .slider__arrow--left {
@@ -101,8 +97,8 @@
   display: block;
   width: 9px;
   height: 9px;
-  border-left: 2px solid #883eca;
-  border-top: 2px solid #883eca;
+  border-left: 2px solid $purple;
+  border-top: 2px solid $purple;
   border-radius: 3px;
 }
 
@@ -119,18 +115,14 @@
 @media (min-width: $tablet-width) {
   .slider__image-container::before {
     width: calc(100% - 70px);
-    height: 163px;
     top: -24px;
     left: 35px;
-    background-color: #e4dde8;
   }
 
   .slider__image-container::after {
     width: calc(100% - 32px);
-    height: 177px;
     top: -12px;
     left: 16px;
-    background-color: #bebac1;
   }
 
   .slider__wrapper {

@@ -4,7 +4,6 @@
 }
 
 .contacts__wrapper {
-  box-sizing: border-box;
   margin: 0 auto;
   padding: 45px 38px 57px 38px;
   width: 290px;
@@ -19,7 +18,7 @@
   list-style: none;
   font-size: 14px;
   line-height: 16px;
-  color: #5e606a;
+  color: $color-text-grey;
 }
 
 .contacts__item {
@@ -33,7 +32,6 @@
     position: absolute;
     left: 0;
     top: 0;
-    box-sizing: border-box;
     display: block;
     background-repeat: no-repeat;
   }

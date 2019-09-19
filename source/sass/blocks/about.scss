@@ -16,13 +16,11 @@
   font-size: 14px;
   line-height: 24px;
   font-weight: 500px;
-  color: #5e606a;
+  color: $color-text-grey;
 }
 
 .about__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  @include list-unstyled;
 }
 
 @media (min-width: $tablet-width) {

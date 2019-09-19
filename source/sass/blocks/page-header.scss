@@ -1,5 +1,4 @@
 .page-header {
-  box-sizing: border-box;
   max-width: $mobile-width + 100px;
   margin: 0 auto;
   display: flex;
@@ -11,17 +10,12 @@
 
 .page-header__logo {
   padding: 0;
-  font-size: 18px;
-  line-height: 15px;
-  font-weight: 800;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+
+  @include logo-text;
 }
 
 .page-header__nav--hide,
-.page-header__phone--hide,
-.page-header__toggle--hide {
+.page-header__phone--hide {
   display: none;
 }
 
@@ -29,7 +23,6 @@
   top: 30px;
   right: 0;
   display: block;
-  box-sizing: border-box;
   width: 25px;
   height: 16px;
   text-indent: -10000px;

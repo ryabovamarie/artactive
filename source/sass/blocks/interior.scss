@@ -9,14 +9,14 @@
 .interior__wrapper::before {
   content: "2";
   top: 48px;
-  color: rgb(255, 255, 255);
+  color: $color-text-white;
 }
 
 .interior__description {
   margin-top: 35px;
   font-size: 14px;
   line-height: 24px;
-  color: #5e606a;
+  color: $color-text-grey;
 }
 
 .interior__button {

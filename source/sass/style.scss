@@ -1,8 +1,10 @@
-@import "general/normalize";
-@import "general/visually-hidden";
-@import "general/fonts";
-@import "general/variables";
-@import "general/global";
+@import "variables/colors";
+@import "variables/layout";
+@import "variables/fonts";
+@import "mixins/general";
+@import "mixins/text";
+@import "normalize";
+@import "scaffolding";
 @import "blocks/button";
 @import "blocks/arrow-nav";
 @import "blocks/title";

@@ -1,17 +1,14 @@
 .services {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  @include list-unstyled;
 }
 
 .services__item:nth-child(2n) {
-  background-color: white;
+  background-color: $background-white;
 }
 
 .services__wrapper {
   position: relative;
   display: block;
-  box-sizing: border-box;
   max-width: $mobile-width + 100px;
   margin: 0 auto;
   padding: 0 15px;
@@ -20,7 +17,7 @@
     position: absolute;
     top: 55px;
     left: 40px;
-    font-family: "Muller", "Arial", sans-serif;
+    font-family: $muller-font;
     font-size: 200px;
     font-weight: 900;
     color: rgb(250, 248, 251);
