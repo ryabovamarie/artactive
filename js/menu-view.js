@@ -24,4 +24,4 @@ export default function menuView() {
       document.body.classList.add(`body--no-scroll`);
     }
   };
-};
+}

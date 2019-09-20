@@ -20,7 +20,7 @@ gulp.task(`style`, () => {
     pipe(sass()).
     pipe(postcss([
       autoprefixer(),
-      mqpacker({ sort: true })
+      mqpacker({sort: true})
     ])).
     pipe(gulp.dest(`build/css`)).
     pipe(server.stream()).
@@ -48,15 +48,15 @@ gulp.task(`copy`, gulp.series(`copy-html`, `scripts`, `style`, () => {
   return gulp.src([
     `fonts/**/*.{woff,woff2}`,
     `img/*.*`
-  ], { base: `.` }).
+  ], {base: `.`}).
     pipe(gulp.dest(`build`));
 }));
 
 gulp.task(`imagemin`, gulp.series(`copy`, () => {
   return gulp.src(`build/img/**/*.{jpg,png,gif}`).
     pipe(imagemin([
-      imagemin.optipng({ optimizationLevel: 3 }),
-      imagemin.jpegtran({ progressive: true })
+      imagemin.optipng({optimizationLevel: 3}),
+      imagemin.jpegtran({progressive: true})
     ])).
     pipe(gulp.dest(`build/img`));
 }));
@@ -92,16 +92,16 @@ gulp.task(`serve`, gulp.series(`assemble`, () => {
 
 gulp.task(`build`, gulp.series(`assemble`, `imagemin`));
 
-gulp.task(`test`, function () {
+gulp.task(`test`, () => {
   return gulp
     .src([`js/**/*.test.js`])
     .pipe(rollup({
       plugins: [
-        commonjs() // Сообщает Rollup, что модули можно загружать из node_modules
+        commonjs()
       ]
-    }, `cjs`)) // Выходной формат тестов — `CommonJS` модуль
+    }, `cjs`))
     .pipe(gulp.dest(`build/test`))
     .pipe(mocha({
-      reporter: `spec` // Вид в котором я хочу отображать результаты тестирования
+      reporter: `spec`
     }));
 });

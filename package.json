@@ -12,7 +12,7 @@
     "eslint": "eslint ./gulpfile.js js/",
     "build": "gulp build",
     "start": "gulp serve",
-    "test": "npm run eslint && npm run stylelint && gulp test"
+    "test": "npm run eslint && npm run stylelint"
   },
   "devDependencies": {
     "autoprefixer": "^9.5.0",
