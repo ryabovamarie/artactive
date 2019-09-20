@@ -1,0 +1,19 @@
+.nav-list {
+  @include list-unstyled;
+}
+
+.nav-list__link {
+  cursor: pointer;
+  text-transform: uppercase;
+  color: $color-text-menu;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 48px;
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+}

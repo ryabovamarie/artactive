@@ -42,6 +42,46 @@
   }
 }
 
+.page-header__wrapper--opened {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 1, 1, 0.5);
+}
+
+.page-header__container--opened {
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: $background-white;
+  box-shadow: 0 5px 10px rgba(0, 1, 1, 0.25);
+}
+
+.page-header__toggle--opened {
+  position: absolute;
+  right: 26px;
+  top: 26px;
+  width: 16px;
+  background-image: url("../img/close.svg");
+}
+
+.page-header__nav {
+  padding-top: 40px;
+  padding-left: 67px;
+  letter-spacing: 0.8px;
+}
+
+.page-header__phone {
+  margin-top: 65px;
+}
+
 @media (min-width: $tablet-width) {
   .page-header {
     max-width: $tablet-width;

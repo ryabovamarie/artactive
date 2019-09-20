@@ -1,113 +1,107 @@
-'use strict';
+const del = require(`del`);
+const gulp = require(`gulp`);
+const sass = require(`gulp-sass`);
+const plumber = require(`gulp-plumber`);
+const postcss = require(`gulp-postcss`);
+const autoprefixer = require(`autoprefixer`);
+const server = require(`browser-sync`).create();
+const mqpacker = require(`css-mqpacker`);
+const minify = require(`gulp-csso`);
+const rename = require(`gulp-rename`);
+const imagemin = require(`gulp-imagemin`);
+const rollup = require(`gulp-better-rollup`);
+const sourcemaps = require(`gulp-sourcemaps`);
+const mocha = require(`gulp-mocha`);
+const commonjs = require(`rollup-plugin-commonjs`);
 
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var plumber = require('gulp-plumber');
-var posthtml = require('gulp-posthtml');
-var includeHtml = require('posthtml-include');
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
-var minify = require('gulp-csso');
-var uglify = require('gulp-uglify');
-var htmlmin = require('gulp-htmlmin');
-var concat = require('gulp-concat');
-var imagemin = require('gulp-imagemin');
-var webp = require('gulp-webp');
-var svgstore = require('gulp-svgstore');
-var rsp = require('remove-svg-properties').stream;
-var rename = require('gulp-rename');
-var run = require('run-sequence');
-var del = require('del');
-var server = require('browser-sync').create();
+gulp.task(`style`, () => {
+  return gulp.src(`sass/style.scss`).
+    pipe(plumber()).
+    pipe(sass()).
+    pipe(postcss([
+      autoprefixer(),
+      mqpacker({ sort: true })
+    ])).
+    pipe(gulp.dest(`build/css`)).
+    pipe(server.stream()).
+    pipe(minify()).
+    pipe(rename(`style.min.css`)).
+    pipe(gulp.dest(`build/css`));
+});
 
-gulp.task('style', (done) => {
-  gulp.src('source/sass/style.scss')
+gulp.task(`scripts`, () => {
+  return gulp.src(`js/main.js`)
     .pipe(plumber())
-    .pipe(sass())
-    .pipe(postcss([
-      autoprefixer()
-    ]))
-    .pipe(gulp.dest('build/css'))
-    .pipe(minify())
-    .pipe(rename('style.min.css'))
-    .pipe(gulp.dest('build/css'))
-    .pipe(server.stream());
-  done();
+    .pipe(sourcemaps.init())
+    .pipe(rollup({}, `iife`))
+    .pipe(sourcemaps.write(``))
+    .pipe(gulp.dest(`build/js`));
 });
 
-gulp.task('html', () => {
-  return gulp.src('source/*.html')
-    .pipe(posthtml([
-      includeHtml()
-    ]))
-    .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(gulp.dest('build'))
-    .pipe(server.stream());
+gulp.task(`copy-html`, () => {
+  return gulp.src(`*.{html,ico}`).
+    pipe(gulp.dest(`build`)).
+    pipe(server.stream());
 });
 
-gulp.task('js', () => {
-  return gulp.src(['source/js/*.js', '!source/js/*.min.js'])
-    .pipe(uglify())
-    .pipe(concat('app.min.js'))
-    .pipe(gulp.dest('build/js'));
-});
-
-gulp.task('sprite', () => {
-  return gulp.src('source/img/*.svg')
-    .pipe(svgstore({
-      inlineSvg: true
-    }))
-    .pipe(rename('sprite.svg'))
-    .pipe(rsp.remove({
-      properties: [rsp.PROPS_FILL]
-    }))
-    .pipe(gulp.dest('build/img'));
-});
-
-gulp.task('clean', () => {
-  return del('build');
-});
-
-gulp.task('copy', () => {
+gulp.task(`copy`, gulp.series(`copy-html`, `scripts`, `style`, () => {
   return gulp.src([
-      'source/fonts/**',
-      'source/img/**',
-      'source/js/**'
-    ], {
-      base: 'source/'
-    })
-    .pipe(gulp.dest('build'));
+    `fonts/**/*.{woff,woff2}`,
+    `img/*.*`
+  ], { base: `.` }).
+    pipe(gulp.dest(`build`));
+}));
+
+gulp.task(`imagemin`, gulp.series(`copy`, () => {
+  return gulp.src(`build/img/**/*.{jpg,png,gif}`).
+    pipe(imagemin([
+      imagemin.optipng({ optimizationLevel: 3 }),
+      imagemin.jpegtran({ progressive: true })
+    ])).
+    pipe(gulp.dest(`build/img`));
+}));
+
+gulp.task(`clean`, () => {
+  return del(`build`);
 });
 
-gulp.task('build', gulp.series('clean', 'copy', 'style', 'sprite', 'js', 'html'));
+gulp.task(`js-watch`, gulp.series(`scripts`, (done) => {
+  server.reload();
+  done();
+}));
 
-gulp.task('serve', () => {
+gulp.task(`assemble`, gulp.series(`clean`, `copy`, `style`));
+
+gulp.task(`serve`, gulp.series(`assemble`, () => {
   server.init({
-    server: 'build/',
+    server: `./build`,
     notify: false,
     open: true,
-    cors: true,
+    port: 8000,
     ui: false
   });
 
-  gulp.watch('source/sass/**/*.{scss,sass}', gulp.series('style'));
-  gulp.watch('source/*.html', gulp.series('html'));
-  gulp.watch('source/js/*.js', gulp.series('js'));
-});
+  gulp.watch(`sass/**/*.{scss,sass}`, gulp.series(`style`));
+  gulp.watch(`*.html`).on(`change`, (e) => {
+    if (e.type !== `deleted`) {
+      gulp.series(`copy-html`)();
+    }
+  });
+  gulp.watch(`js/**/*.js`, gulp.series(`js-watch`));
+}));
 
+gulp.task(`build`, gulp.series(`assemble`, `imagemin`));
 
-gulp.task('images', () => {
-  return gulp.src('img/**/*.{png,jpg,svg}')
-    .pipe(imagemin([
-      imagemin.optipng({ optimizationLevel: 3 }),
-      imagemin.jpegtran({ progressive: true }),
-      imagemin.svgo()
-    ]))
-    .pipe(gulp.dest('source/img/optimized'));
-});
-
-gulp.task('webp', () => {
-  return gulp.src('img/**/*.{jpg,png}')
-    .pipe(webp({ quality: 85 }))
-    .pipe(gulp.dest('source/img/optimized'));
+gulp.task(`test`, function () {
+  return gulp
+    .src([`js/**/*.test.js`])
+    .pipe(rollup({
+      plugins: [
+        commonjs() // Сообщает Rollup, что модули можно загружать из node_modules
+      ]
+    }, `cjs`)) // Выходной формат тестов — `CommonJS` модуль
+    .pipe(gulp.dest(`build/test`))
+    .pipe(mocha({
+      reporter: `spec` // Вид в котором я хочу отображать результаты тестирования
+    }));
 });

@@ -132,6 +132,10 @@ img {
   height: auto;
 }
 
+.body--no-scroll {
+  overflow: hidden;
+}
+
 .visually-hidden {
   position: absolute;
 
