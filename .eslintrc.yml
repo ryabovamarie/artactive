@@ -4,7 +4,12 @@ env:
   commonjs: true
   mocha: true
 
-extends: 'htmlacademy/es6'
+extends:
+  'htmlacademy/es6'
+
+globals:
+  ymaps: true
+
 parserOptions:
   ecmaVersion: 2015
   sourceType: 'module'
