@@ -13,7 +13,7 @@ export default function menuView() {
       container.classList.remove(`page-header__container--opened`);
       nav.classList.add(`page-header__nav--hide`);
       phone.classList.add(`page-header__phone--hide`);
-      document.body.classList.remove(`body--no-scroll`);
+      document.body.style.overflow = ``;
     } else {
       toggle.blur();
       toggle.classList.add(`page-header__toggle--opened`);
@@ -21,7 +21,7 @@ export default function menuView() {
       container.classList.add(`page-header__container--opened`);
       nav.classList.remove(`page-header__nav--hide`);
       phone.classList.remove(`page-header__phone--hide`);
-      document.body.classList.add(`body--no-scroll`);
+      document.body.style.overflow = `hidden`;
     }
   };
 }
